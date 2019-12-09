@@ -1,27 +1,29 @@
-import './db'
-import http from 'http'
-import dotenv from'dotenv'
-import passport from './auth';
+import "./db";
+import http from "http";
+import dotenv from "dotenv";
+// import passport from "./auth/index";
 
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser')
+// require ('./db');
+// const http = require ('http');
+// const dotenv = require('dotenv');
+// const passport = require('./auth');
 
+// const express = require('express');
+// const mongoose = require('mongoose');
+// const bodyParser = require('body-parser')
 
-dotenv.config()
+dotenv.config();
 
-const server = express();
+// const app = express();
 
-server.use(passport.initialize());
+// app.use(passport.initialize());
 
+// eslint-disable-next-line
+const port = process.env.PORT;
 
-const port = process.env.PORT
-
-server.use()
-
-const server = http.createServer((req,res) => {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('Hello world');
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { "Content-Type": "text/plain" });
+  res.end("Hello world");
 });
 
 server.listen(port);
