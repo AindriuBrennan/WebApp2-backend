@@ -1,31 +1,34 @@
 import "./db";
-import http from "http";
+// import http from "http";
 import dotenv from "dotenv";
+import express from 'express';
+import bookingsRouter from './bookings';
+import bodyParser from 'body-parser';
 // import passport from "./auth/index";
 
-// require ('./db');
-// const http = require ('http');
-// const dotenv = require('dotenv');
-// const passport = require('./auth');
 
-// const express = require('express');
-// const mongoose = require('mongoose');
-// const bodyParser = require('body-parser')
 
 dotenv.config();
 
-// const app = express();
+const server = express();
 
 // app.use(passport.initialize());
 
 // eslint-disable-next-line
 const port = process.env.PORT;
 
-const server = http.createServer((req, res) => {
-  res.writeHead(200, { "Content-Type": "text/plain" });
-  res.end("Hello world");
-});
+server.use(express.static('public'));
 
-server.listen(port);
+//configure body-parser
+server.use(bodyParser.json());
+server.use(bodyParser.urlencoded());
+
+//route for  getting bookings
+server.use('/bookings',bookingsRouter);
+
+
+server.listen(port), () => {
+    console.info(`This Server is running at ${port}`);
+};
 
 console.log(`server sucessfully running on port ${port}`);
