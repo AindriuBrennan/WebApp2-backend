@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "proxy": "http://localhost:8080"
+    "start": "nodemon --ignore mealBooker/* --exec babel-node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",

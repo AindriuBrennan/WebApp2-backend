@@ -10,6 +10,9 @@ const users = [
 export default async function loadUsers() {
     console.log('load user Data');
     try {
-        await
+      new  userModel(users[0]).save();
+      console.info(`${users.length} users were successfully stored`);
+    } catch(err) {
+        console.error(`failed to Load User data:${err}`);
     }
 }
