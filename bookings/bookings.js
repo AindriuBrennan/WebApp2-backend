@@ -1,5 +1,5 @@
 export const bookings = [
-    {
+    {   
         'restaurantName':'La Boheme',
         'address':`2 George's Street Waterford`,
         'phoneNo': '(051)875645',
@@ -7,6 +7,7 @@ export const bookings = [
         'bookingDate': '17/12/19'
     },
     {
+        
         'restaurantName':'Emilianos',
         'address': '22 High Street, Waterford',
         'phoneNo': '(051)820333',
@@ -14,6 +15,7 @@ export const bookings = [
         'bookingDate': '27/12/19'
     },
     {
+        
         'restaurantName':'Cafe Goa',
         'address':'36 The Quay, Waterford',
         'phoneNo':'(051)304970',
