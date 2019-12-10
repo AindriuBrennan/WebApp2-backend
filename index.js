@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import express from 'express';
 import bookingsRouter from './bookings';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 // import passport from "./auth/index";
 
 
@@ -14,8 +15,10 @@ const server = express();
 
 // app.use(passport.initialize());
 
+server.use(cors());
 // eslint-disable-next-line
 const port = process.env.PORT;
+
 
 server.use(express.static('public'));
 
