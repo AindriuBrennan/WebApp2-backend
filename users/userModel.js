@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcrypt-nodejs';
 
 
 const Schema = mongoose.Schema;
@@ -15,7 +15,7 @@ const UserSchema = new Schema({
     },
 
 });
-//
+//pre save hook that encrypts a user password before saving or updating
 UserSchema.pre('save', function(next) {
     const user = this;
     if (this.isModified('password') || this.isNew) {
@@ -36,10 +36,14 @@ UserSchema.pre('save', function(next) {
     }
 });
 
-UserSchema.statics.findByUserName = function(username) {
-    return this.findOne({ username:username});
+
+//find users in db by email
+UserSchema.statics.findByEmail = function(email) {
+    return this.findOne({ email : email});
 };
 
+
+//authenticate users by password
 UserSchema.methods.comparePassword = function(passw,cb) {
     bcrypt.compare(passw, this.password,(err,isMatch) => {
         if(err) {

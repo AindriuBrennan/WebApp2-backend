@@ -5,6 +5,8 @@ import express from 'express';
 import bookingsRouter from './bookings';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import loadBookings from './bookingData';
+import loadUsers from './userData';
 // import passport from "./auth/index";
 
 
@@ -28,6 +30,14 @@ server.use(bodyParser.urlencoded());
 
 //route for  getting bookings
 server.use('/bookings',bookingsRouter);
+
+//load the booking data and user login details to the mongo backend
+if(process.env.seedDb){
+    loadBookings();
+    loadUsers();
+}
+
+
 
 
 server.listen(port), () => {
