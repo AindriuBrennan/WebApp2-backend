@@ -2,7 +2,7 @@ import express from 'express';
 import Booking from './bookingModel';
 import asyncHandler from 'express-async-handler';
 
-import { runInContext } from 'vm';
+
 
 
 //get bookings
@@ -19,7 +19,7 @@ router.get('/', async(req,res) => {
 });
 
 //create a booking using async handler
-runInContext.post('/', asyncHandler(async(req,res) => {
+router.post('/', asyncHandler(async(req,res) => {
     const booking = await Booking.create(req.body);
     res.status(201).json(booking);
 }));
@@ -47,7 +47,7 @@ router.delete('/:id', asyncHandler(async(req,res) =>{
 
 /**
  * Handle general errors
- * @param{object} res The Response object
+ * @param {object} res The Response object
  * @param {object} err The error object
  * @return {object} The response object
  */

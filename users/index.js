@@ -1,32 +1,32 @@
 import express from 'express';
-import User from '../models/userModel'
+import User from './userModel';
 import asyncHandler from 'express-async-handler';
 import jwt from 'jsonwebtoken';
 
-const router = express.Router();
+const router = express.Router();//eslint-disable-line
 
 
 //get all users
 
 router.get('/', asyncHandler(async(req, res) => {
-    const contacts = await User.find();
-    res.status(200).json(contacts);
+    const users = await User.find();
+    res.status(200).json(users);
 }));
 
 //authenticate user with asycn handler
-
 router.post('/', asyncHandler(async(req,res) => {
     if(!req.body.email || !req.body.password) {
         res.json({
             success: false,
             msg: 'Invalid Email or Password'
         });
-    };
+    }
     if(req.query.action === 'register') {
         const newUser = new User({
             email:req.body.email,
             password: req.body.password,
         });
+        //save a new user
         await newUser.save();
         res.status(201).json({
             success:true,
@@ -51,7 +51,7 @@ router.post('/', asyncHandler(async(req,res) => {
                 });
             }
         });
-    };
+    }
 }));
 
 export default router;

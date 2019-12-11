@@ -1,8 +1,8 @@
 import "./db";
-// import http from "http";
 import dotenv from "dotenv";
 import express from 'express';
 import bookingsRouter from './bookings';
+import userRouter from './users/index';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import loadBookings from './bookingData';
@@ -31,7 +31,11 @@ server.use(bodyParser.urlencoded());
 //route for  getting bookings
 server.use('/bookings',bookingsRouter);
 
+//route for getting users
+server.use('/users', userRouter);
+
 //load the booking data and user login details to the mongo backend
+
 if(process.env.seedDb){
     loadBookings();
     loadUsers();

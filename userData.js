@@ -1,4 +1,4 @@
-import userModel from '.../users/userModel'
+import userModel from './users/userModel';
 
 const users = [
     {
@@ -13,6 +13,7 @@ const users = [
 
 
 export default async function loadUsers() {
+    console.log('load user Data');
     try {
         await userModel.deleteMany();
         new userModel(users[0]).save();

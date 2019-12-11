@@ -17,10 +17,10 @@ const BookingSchema = new Schema({
     max: 100000000
   },
   bookingTime: {
-    type: Date
+    type: String
   },
   bookingDate: {
-    type: Date
+    type: String
   }
 });
 
