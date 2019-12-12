@@ -2,12 +2,12 @@ import "./db";
 import dotenv from "dotenv";
 import express from 'express';
 import bookingsRouter from './bookings';
-import userRouter from './users/index';
+import usersRouter from './users/index';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import loadBookings from './bookingData';
 import loadUsers from './userData';
-// import passport from "./auth/index";
+import passport from "./auth";
 
 
 
@@ -24,15 +24,19 @@ const port = process.env.PORT;
 
 server.use(express.static('public'));
 
+//initialise passport
+server.use(passport.initialize());
+
 //configure body-parser
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded());
 
 //route for  getting bookings
 server.use('/bookings',bookingsRouter);
-
 //route for getting users
-server.use('/users', userRouter);
+server.use('/users', usersRouter);
+
+
 
 //load the booking data and user login details to the mongo backend
 

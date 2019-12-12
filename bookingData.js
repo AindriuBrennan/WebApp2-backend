@@ -1,7 +1,7 @@
 import bookingModel from "./bookings/bookingModel";
 
 const bookings = [
-  { bookingId:"1",
+  { 
     restaurantName: "La Boheme",
     address: `2 George's Street Waterford`,
     phoneNo: "051 875645",
@@ -9,7 +9,7 @@ const bookings = [
     bookingDate: "17/12/19"
   },
   {
-    bookingId:"2",
+    
     restaurantName: "Emilianos",
     address: "22 High Street, Waterford",
     phoneNo: "051 820333",
@@ -17,7 +17,7 @@ const bookings = [
     bookingDate: "27/12/19"
   },
   {
-    bookingId:"3",
+    
     restaurantName: "Cafe Goa",
     address: "36 The Quay, Waterford",
     phoneNo: "051 304970",
